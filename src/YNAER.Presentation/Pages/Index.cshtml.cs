@@ -1,5 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace YNAER.Presentation.Pages;
 
@@ -14,6 +14,11 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+        _logger.LogInformation("Ran GET");
+    }
 
+    public IActionResult OnPost()
+    {
+        return Partial("_IndexResult", new { ResponseMessage = "This is a cool message" });
     }
 }
