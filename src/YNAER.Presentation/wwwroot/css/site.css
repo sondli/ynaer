@@ -1,0 +1,9 @@
+body {
+    min-height: 100vh;
+    background-color: #232e3e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+

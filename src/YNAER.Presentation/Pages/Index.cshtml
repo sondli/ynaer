@@ -4,20 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
-    <span>HTMX test</span>
-    <form>
-        @Html.AntiForgeryToken()
-        <button
-            hx-post="/"
-            hx-target="#results"
-            hx-swap="innerHTML"
-        >
-            Get results
-        </button>
-    </form>
-    <span>Results below</span>
-    <div id="results">
-        
-    </div>
-</div>
+<section id="hero-section">
+    <h1 id="hero-title">YNAER</h1>
+    <sub id="hero-subtitle">You need an expense report</sub>
+</section>
