@@ -10,4 +10,8 @@
       <Folder Include="wwwroot\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\YNAER.Infrastructure\YNAER.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

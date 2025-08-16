@@ -1,0 +1,41 @@
+@page
+@model YNAER.Presentation.Pages.Account.Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section>
+    <h1>Login</h1>
+    <form
+        id="login-form"
+        hx-post="/Account/Login"
+        hx-target="#login-status-message"
+        hx-swap="innerHTML">
+        @Html.AntiForgeryToken()
+        <div id="login-status-message"></div>
+
+        <div>
+            <input id="userName" name="userName" type="text" autocomplete="username"
+                   aria-required="true"/>
+            <label for="userName">Username</label>
+        </div>
+        <div>
+            <input id="password" name="password" type="password" autocomplete="current-password"
+                   aria-required="true"/>
+            <label for="password">Password</label>
+        </div>
+        <div>
+            <label for="rememberMe" class="form-label">
+                <input id="rememberMe" type="checkbox" name="rememberMe" value="true"/>
+                Remember me?
+            </label>
+        </div>
+        <div>
+            <a href="/Account/Register">Register</a>
+        </div>
+        <div>
+            <button id="login-submit" type="submit">Log in</button>
+        </div>
+    </form>
+</section>
+

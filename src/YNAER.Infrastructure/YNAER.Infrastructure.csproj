@@ -10,4 +10,14 @@
     <EmbeddedResource Include="Persistence\Migrations\**\*.sql" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YNAER.Domain\YNAER.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
