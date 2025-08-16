@@ -28,14 +28,13 @@ public class Login : PageModel
         ReturnUrl = returnUrl;
     }
 
-    public async Task<IActionResult> OnPostAsync(string userName, string password, bool rememberMe = false,
-        string? returnUrl = null)
+    public async Task<IActionResult> OnPostAsync(string userName, string password, bool rememberMe, string? returnUrl)
     {
         returnUrl ??= Url.Content("~/");
 
         if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
         {
-            return Partial("_LoginStatusMessage", "Invalid login info");
+            return Partial("_StatusMessagePartial", "Invalid login info");
         }
 
         var result =
@@ -45,12 +44,12 @@ public class Login : PageModel
         {
             _logger.LogWarning("User is locked out");
 
-            return Partial("_LoginStatusMessage", "Your account is locked");
+            return Partial("_StatusMessagePartial", "Your account is locked");
         }
 
         if (!result.Succeeded)
         {
-            return Partial("_LoginStatusMessage", "Login failed");
+            return Partial("_StatusMessagePartial", "Login failed");
         }
 
         _logger.LogInformation("User logged in");

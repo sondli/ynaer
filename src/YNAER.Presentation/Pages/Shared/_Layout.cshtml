@@ -13,8 +13,22 @@
 </head>
 <body>
 <header>
-    <span>Logo here</span>
-    <span>Menu here</span>
+    <nav>
+        <div>
+            <a href="/">Home</a>
+        </div>
+        <div>
+            @if (User.Identity is { IsAuthenticated: true })
+            {
+                <a href="/Account/Logout">Log out</a>
+            }
+            else
+            {
+                <a href="/Account/Login">Log in</a>
+                <a href="/Account/Register">Register</a>
+            }
+        </div>
+    </nav>
 </header>
 <main>
     @RenderBody()

@@ -27,12 +27,12 @@ public class Register : PageModel
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) ||
             string.IsNullOrWhiteSpace(confirmPassword))
         {
-            return Partial("_LoginStatusMessage", "Invalid register info");
+            return Partial("_StatusMessagePartial", "Invalid register info");
         }
 
         if (password != confirmPassword)
         {
-            return Partial("_LoginStatusMessage", "Passwords do not match");
+            return Partial("_StatusMessagePartial", "Passwords do not match");
         }
 
         var user = new ApplicationUser
@@ -46,7 +46,7 @@ public class Register : PageModel
         if (!result.Succeeded)
         {
             var errors = string.Join(" ", result.Errors.Select(e => e.Description));
-            return Partial("_LoginStatusMessage", errors);
+            return Partial("_StatusMessagePartial", errors);
         }
 
         _logger.LogInformation("User created a new account with password.");
