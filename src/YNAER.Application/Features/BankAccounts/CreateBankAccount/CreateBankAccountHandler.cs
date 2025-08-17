@@ -32,8 +32,7 @@ public class CreateBankAccountHandler : ICommandHandler<CreateBankAccountCommand
             var validationResult = await _validator.ValidateAsync(command, ct);
             if (!validationResult.IsValid)
             {
-                var error = new ApplicationValidationError(validationResult.Errors);
-                return Result<BankAccount>.Fail(error);
+                return new ApplicationValidationError(validationResult.Errors);
             }
 
             var account = BankAccount.Create(command.User, command.Name);
@@ -43,8 +42,7 @@ public class CreateBankAccountHandler : ICommandHandler<CreateBankAccountCommand
         }
         catch (Exception e)
         {
-            var error = new ExceptionalError(e);
-            return Result<BankAccount>.Fail(error);
+            return new ExceptionalError(e);
         }
     }
 }

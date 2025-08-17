@@ -2,9 +2,9 @@ namespace YNAER.Domain.Common;
 
 public class Result
 {
-    private readonly IError? _error;
+    private readonly Error? _error;
 
-    protected Result(IError? error)
+    protected Result(Error? error)
     {
         _error = error;
     }
@@ -13,7 +13,7 @@ public class Result
     public bool IsSuccess => _error is null;
     public bool IsFailure => !IsSuccess;
 
-    public IError Error =>
+    public Error Error =>
         _error ?? throw new InvalidOperationException("Cannot access the error of a successful result.");
 
     public static Result Ok()
@@ -21,10 +21,12 @@ public class Result
         return new Result(null);
     }
 
-    public static Result Fail(IError error)
+    public static Result Fail(Error error)
     {
         return new Result(error);
     }
+    
+    public static implicit operator Result(Error error) => Fail(error);
 }
 
 public class Result<T> : Result
@@ -36,7 +38,7 @@ public class Result<T> : Result
         _value = value;
     }
 
-    private Result(IError error) : base(error)
+    private Result(Error error) : base(error)
     {
     }
 
@@ -49,10 +51,11 @@ public class Result<T> : Result
         return new Result<T>(value);
     }
 
-    public new static Result<T> Fail(IError error)
+    public new static Result<T> Fail(Error error)
     {
         return new Result<T>(error);
     }
 
     public static implicit operator Result<T>(T value) => Ok(value);
+    public static implicit operator Result<T>(Error error) => Fail(error);
 }

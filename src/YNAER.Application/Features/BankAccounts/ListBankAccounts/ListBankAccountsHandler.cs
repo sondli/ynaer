@@ -27,13 +27,11 @@ public class ListBankAccountsHandler : IQueryHandler<ListBankAccountsQuery, IEnu
             _logger.LogInformation("Listing bank accounts for user {UserId}", query.User.Id);
 
             var accounts = await _repository.ListByUserIdAsync(query.User.Id, ct);
-
             return Result<IEnumerable<BankAccount>>.Ok(accounts);
         }
         catch (Exception e)
         {
-            var error = new ExceptionalError(e);
-            return Result<IEnumerable<BankAccount>>.Fail(error);
+            return new ExceptionalError(e);
         }
     }
 }

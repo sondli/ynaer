@@ -30,15 +30,13 @@ public class DeleteBankAccountHandler : ICommandHandler<DeleteBankAccountCommand
             var validationResult = await _validator.ValidateAsync(command, ct);
             if (!validationResult.IsValid)
             {
-                var error = new ApplicationValidationError(validationResult.Errors);
-                return Result.Fail(error);
+                return new ApplicationValidationError(validationResult.Errors);
             }
 
             var account = await _repository.GetAsync(command.Id, ct);
             if (account is null)
             {
-                var error = new NotFoundError(command.Id);
-                return Result.Fail(error);
+                return new NotFoundError(command.Id);
             }
 
             await _repository.DeleteAsync(account, ct);
@@ -46,8 +44,7 @@ public class DeleteBankAccountHandler : ICommandHandler<DeleteBankAccountCommand
         }
         catch (Exception e)
         {
-            var error = new ExceptionalError(e);
-            return Result.Fail(error);
+            return new ExceptionalError(e);
         }
     }
 }

@@ -3,18 +3,15 @@ using YNAER.Domain.Common;
 
 namespace YNAER.Application.Errors;
 
-public class ApplicationValidationError : IError
+public class ApplicationValidationError : Error
 {
     private readonly IList<ValidationFailure> _validationFailures;
 
     public ApplicationValidationError(IList<ValidationFailure> validationFailures)
+        : base("Validation failure", nameof(ApplicationValidationError))
     {
-        Message = "Validation failure";
         _validationFailures = validationFailures;
-        Code = nameof(ApplicationValidationError);
     }
 
-    public string Message { get; }
-    public string Code { get; }
     public IReadOnlyList<ValidationFailure> ValidationFailures => _validationFailures.AsReadOnly();
 }

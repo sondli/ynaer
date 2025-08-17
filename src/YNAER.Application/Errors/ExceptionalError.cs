@@ -2,23 +2,17 @@ using YNAER.Domain.Common;
 
 namespace YNAER.Application.Errors;
 
-public class ExceptionalError : IError
+public class ExceptionalError : Error
 {
-    public ExceptionalError(string message, Exception exception)
+    public ExceptionalError(string message, Exception exception) : base(message, nameof(ExceptionalError))
     {
-        Message = message;
         Exception = exception;
-        Code = nameof(ExceptionalError);
     }
 
-    public ExceptionalError(Exception exception)
+    public ExceptionalError(Exception exception) : base(exception.Message, nameof(ExceptionalError))
     {
-        Message = exception.Message;
         Exception = exception;
-        Code = nameof(ExceptionalError);
     }
 
-    public string Message { get; }
-    public string Code { get; }
     public Exception Exception { get; }
 }
