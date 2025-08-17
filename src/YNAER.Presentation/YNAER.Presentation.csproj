@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\YNAER.Application\YNAER.Application.csproj" />
       <ProjectReference Include="..\YNAER.Infrastructure\YNAER.Infrastructure.csproj" />
     </ItemGroup>
 
