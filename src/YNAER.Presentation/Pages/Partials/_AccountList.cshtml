@@ -1,0 +1,20 @@
+@model List<YNAER.Domain.Entities.BankAccount>
+
+<div id="accountsContainer">
+    @foreach (var account in Model)
+    {
+        <div>
+            @account.Name
+        </div>
+    }
+    <div>
+        <button
+            hx-get="@Url.Page("/Overview", "NewAccountForm")"
+            hx-target="#accountsContainer"
+            hx-swap="outerHTML"
+        >
+            New account
+        </button>
+    </div>
+</div>
+

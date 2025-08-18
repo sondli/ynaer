@@ -1,5 +1,5 @@
 @page
-@model YNAER.Presentation.Pages.Account.Login
+@model YNAER.Presentation.Pages.Profile.Login
 @{
     ViewData["Title"] = "Login";
 }
@@ -8,7 +8,7 @@
     <h1>Login</h1>
     <form
         id="login-form"
-        hx-post="/Account/Login"
+        hx-post="/profile/login"
         hx-target="#login-status-message"
         hx-swap="innerHTML">
         @Html.AntiForgeryToken()
@@ -31,7 +31,7 @@
             </label>
         </div>
         <div>
-            <a href="/Account/Register">Register</a>
+            <a href="/profile/register">Register</a>
         </div>
         <div>
             <button id="login-submit" type="submit">Log in</button>

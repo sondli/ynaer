@@ -9,6 +9,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/site.css"/>
     <link rel="stylesheet" href="/YNAER.Presentation.styles.css"/>
+    @await RenderSectionAsync("Scripts", required: false)
 
 </head>
 <body>
@@ -18,14 +19,15 @@
             <a href="/">Home</a>
         </div>
         <div>
+            <a href="/overview">Overview</a>
             @if (User.Identity is { IsAuthenticated: true })
             {
-                <a href="/Account/Logout">Log out</a>
+                <a href="/profile/logout">Log out</a>
             }
             else
             {
-                <a href="/Account/Login">Log in</a>
-                <a href="/Account/Register">Register</a>
+                <a href="/profile/login">Log in</a>
+                <a href="/profile/register">Register</a>
             }
         </div>
     </nav>

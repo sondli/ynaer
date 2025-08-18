@@ -1,5 +1,5 @@
 @page
-@model YNAER.Presentation.Pages.Account.Register
+@model YNAER.Presentation.Pages.Profile.Register
 @{
     ViewData["Title"] = "Register";
 }
@@ -8,7 +8,7 @@
     <h1>Register</h1>
     <form
         id="register-form"
-        hx-post="/Account/Register"
+        hx-post="/profile/register"
         hx-target="#login-status-message"
         hx-swap="innerHTML">
         @Html.AntiForgeryToken()

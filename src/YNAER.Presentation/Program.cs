@@ -10,6 +10,12 @@ builder.Services
     .AddInfrastructureServices(builder.Configuration)
     .AddApplicationServices();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/profile/login";
+    options.LogoutPath = "/profile/logout";
+});
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();

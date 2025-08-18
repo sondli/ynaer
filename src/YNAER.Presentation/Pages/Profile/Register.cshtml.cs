@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using YNAER.Domain.Entities;
 
-namespace YNAER.Presentation.Pages.Account;
+namespace YNAER.Presentation.Pages.Profile;
 
 public class Register : PageModel
 {

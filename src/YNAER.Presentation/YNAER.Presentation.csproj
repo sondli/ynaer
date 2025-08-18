@@ -15,4 +15,12 @@
       <ProjectReference Include="..\YNAER.Infrastructure\YNAER.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Accounts\Accounts.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Pages\Partials\_StatusMessagePartial.cshtml" />
+    </ItemGroup>
+
 </Project>

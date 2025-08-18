@@ -1,0 +1,17 @@
+article {
+    flex-grow: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#overviewContainer {
+    border-style: solid;
+    border-color: white;
+    border-radius: 6px;
+    flex-grow: 1;
+}
+
+#accountsContainer {
+    display: flex;
+}
