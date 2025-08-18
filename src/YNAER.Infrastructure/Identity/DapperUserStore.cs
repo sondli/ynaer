@@ -129,7 +129,7 @@ public class DapperUserStore : IUserPasswordStore<ApplicationUser>, IUserEmailSt
         using var connection = await _connectionFactory.CreateConnectionAsync(cancellationToken);
 
         const string sql = """select * from ynaer."AspNetUsers" where "Id" = @Id;""";
-        return await connection.QuerySingleOrDefaultAsync<ApplicationUser?>(sql, new { Id = userId });
+        return await connection.QuerySingleOrDefaultAsync<ApplicationUser?>(sql, new { Id = new Guid(userId) });
     }
 
     public async Task<ApplicationUser?> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
